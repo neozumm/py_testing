@@ -1,0 +1,25 @@
+верификационные проверки для спеки
+equivalence parttioning - 
+проверка работы при зарплате < 70, 70..750 , 750<
+perf result < 1, 1..5, 5<
+level < 7, 7..17, 17<
+
+boundary value analysis - 
+результат работы при "угловых" значениях уровня и перф ревью
+level: 7, 17
+review 1, 5
+
+eq part и boundary val analysis - get_mod
+
+desision table - тестирование calculate_bonus, используя приемлемые\неприемлемые значения переменных
+пример: 
+level в
+review в
+salary н
+
+негативное тестирование 
+
+case\effect - Не используется
+state transition - не используется
+
+error guessing - исправили угловые значения в  4 5 пунктах
