@@ -5,7 +5,7 @@ import lab1
 @pytest.mark.parametrize("input,expected",
                          [((6, 4, 75000), "wrong level mod"),
                           ((7, 4, 75000), 22500),
-                          ((19, 4, 75000), "wrong level mod"),
+                          ((19, 4, 75000), "wrong level mod"), # убрать неприемлемые значения
                           ((10, -1, 75000), "wrong review mod"),
                           ((10, 6, 75000), "wrong review mod"),
                           ((10, 3, 50), "wrong salary value"),
@@ -16,7 +16,7 @@ def test_decision_table_calculate_bonus(input, expected):
 
 @pytest.mark.parametrize("input,expected",
                          [(-1, None),
-                          (3, None),
+                          (3, None), # boundary - пересечение на минимальную величину
                           (7, 0.05),
                           (10, 0.1),
                           (11, 0.1),
@@ -30,9 +30,9 @@ def test_eq_part_boundary_val_get_mod_from_level(input, expected):
 
 
 @pytest.mark.parametrize("input,expected",
-                         [(-1, None),
-                          (0, 0),
-                          (1, 0),
+                         [
+                          (0.9, None), 
+                          (1, 0), # boundary - пересечение на минимальную величин
                           (2, 0.25),
                           (2.3, 0.25),
                           (2.5, 0.5),
@@ -42,7 +42,7 @@ def test_eq_part_boundary_val_get_mod_from_level(input, expected):
                           (3.5, 1.5),
                           (3.6, 1.5),
                           (4, 2),
-                          (5, 2)])
+                          (5, 2)]) # нет превышающего
 def test_eq_part_boundary_val_get_mod_from_review(input, expected):
     assert lab1.get_mod_from_review(input) == expected
 
@@ -51,6 +51,7 @@ def test_eq_part_boundary_val_get_mod_from_review(input, expected):
                          [('test', None),
                           ([1, 1], None),
                           ((1, 1), None)])
-def test_negative_get_mod(input, expected):
+def test_negative_get_mod(input, expected): # разделить на 2 теста
     assert lab1.get_mod_from_level(
         input) == expected and lab1.get_mod_from_review(input) == expected
+# calculate_bonus негативный
