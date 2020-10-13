@@ -43,5 +43,9 @@ def test_eq_part_boundary_val_get_mod_from_level(input, expected):
 def test_eq_part_boundary_val_get_mod_from_review(input, expected):
     assert  lab1.get_mod_from_review(input) == expected
 
-    # calc_bonus - eq partition, boundary
-    # negative
+@pytest.mark.parametrize("input,expected",
+                         [('test', None),
+                          ([1, 1], None),
+                          ((1,1), None)])
+def test_negative_get_mod(input, expected):
+    assert lab1.get_mod_from_level(input) == expected and lab1.get_mod_from_review(input) == expected
