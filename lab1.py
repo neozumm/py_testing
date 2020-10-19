@@ -41,6 +41,12 @@ def get_mod_from_review(review_score: float):
 
 quartal = 3
 
+def salary_check(salary):
+    if not isinstance(salary, int):
+        return None
+    if 70000 <= salary <= 750000:
+        return salary
+    return None
 
 def calculate_bonus(level: int, review: float, salary: int):
     mod_level = get_mod_from_level(level)
@@ -49,8 +55,9 @@ def calculate_bonus(level: int, review: float, salary: int):
     mod_review = get_mod_from_review(review)
     if (mod_review == None):
         return "wrong review mod"
-    if (salary >= 70000) & (salary <= 750000):
-        bonus = quartal * salary * mod_level
+    true_salary = salary_check(salary)
+    if true_salary != None:
+        bonus = quartal * true_salary * mod_level
         return bonus*mod_review
     else:
         return "wrong salary value"
