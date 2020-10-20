@@ -21,7 +21,7 @@ def test_boundary_val_salary_check(input, expected):
 
 
 @pytest.mark.parametrize("input,expected",
-                         [(6, None),  
+                         [(6, None),
                           (7, 0.05),
                           (10, 0.1),
                           (11, 0.1),
@@ -36,7 +36,7 @@ def test_eq_part_boundary_val_get_mod_from_level(input, expected):
 
 @pytest.mark.parametrize("input,expected",
                          [(0.9, None),
-                          (1, 0),  
+                          (1, 0),
                           (2, 0.25),
                           (2.3, 0.25),
                           (2.5, 0.5),
@@ -47,7 +47,7 @@ def test_eq_part_boundary_val_get_mod_from_level(input, expected):
                           (3.6, 1.5),
                           (4, 2),
                           (5, 2),
-                          (5.1, None)])  
+                          (5.1, None)])
 def test_eq_part_boundary_val_get_mod_from_review(input, expected):
     assert lab1.get_mod_from_review(input) == expected
 
@@ -56,7 +56,7 @@ def test_eq_part_boundary_val_get_mod_from_review(input, expected):
                          [('test', None),
                           ([1, 1], None),
                           ((1, 1), None)])
-def test_negative_get_mod_from_level(input, expected):  
+def test_negative_get_mod_from_level(input, expected):
     assert lab1.get_mod_from_level(input) == expected
 
 
@@ -74,6 +74,7 @@ def test_negative_get_mod_from_review(input, expected):
                           ((1, 1), None)])
 def test_negative_salary(input, expected):
     assert lab1.salary_check(input) == expected
+
 
 @pytest.mark.parametrize("input,expected",
                          [(('test', 'test2', 'test3'), 'wrong level mod')])
